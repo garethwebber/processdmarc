@@ -1,0 +1,7 @@
+Get list of records
+
+http://192.168.0.102:9200/_aliases?pretty=true
+
+Get record contents
+
+http://192.168.0.102:9200/dmarc_aggregate-2023-05-26/_search?pretty

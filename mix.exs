@@ -40,12 +40,14 @@ defmodule ProcesDmarc.MixProject do
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
+      {:yugo, ">= 0.0.0"}
     ]
   end
 
   defp escript_config do
     [
       # This is the run module for command-line
+      main_module: TowerHanoi
     ]
   end
 

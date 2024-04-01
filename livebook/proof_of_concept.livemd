@@ -1,0 +1,23 @@
+# DMARC processing
+
+```elixir
+Mix.install([:yugo])
+```
+
+## Set up connection to Email Server
+
+```elixir
+children = [
+  {Yugo.Client,
+   name: :dmarc_client,
+   server: System.fetch_env!("LB_MAILSERVER"),
+   username: System.fetch_env!("LB_MAILUSER"),
+   password: System.fetch_env!("LB_MAILPASSWORD")}
+]
+```
+
+```elixir
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+<!-- livebook:{"offset":379,"stamp":{"token":"XCP.0KwQlUI65RbqwUk-7seZ3RuSo7QQKohapp37hY04KinMSWX6cXFbk4yooqnp8BhEpn3izbZE_s8QZPf9RdsYojRtuGLS5tUmDIBmpPQXUSOEunBD8WGawQMyc8q_h5dzrp5q28NH1R8MzoY2aTcUT6MSzg","version":2}} -->

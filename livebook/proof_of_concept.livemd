@@ -1,7 +1,23 @@
 # DMARC processing
 
 ```elixir
-Mix.install([:yugo])
+Mix.install([:yugo, {:kino_db, "~> 0.2.3"}, {:postgrex, ">= 0.0.0"}])
+```
+
+## Set up database connection
+
+<!-- livebook:{"attrs":"eyJkYXRhYmFzZSI6ImRtYXJjIiwiaG9zdG5hbWUiOiJsb2NhbGhvc3QiLCJwYXNzd29yZF9zZWNyZXQiOiIiLCJwb3J0Ijo1NDMyLCJ0eXBlIjoicG9zdGdyZXMiLCJ1c2VfaXB2NiI6ZmFsc2UsInVzZV9zc2wiOmZhbHNlLCJ1c2VybmFtZSI6Im1lIiwidmFyaWFibGUiOiJjb25uIn0","chunks":null,"kind":"Elixir.KinoDB.ConnectionCell","livebook_object":"smart_cell"} -->
+
+```elixir
+opts = [
+  hostname: "localhost",
+  port: 5432,
+  username: "me",
+  password: "",
+  database: "dmarc"
+]
+
+{:ok, conn} = Kino.start_child({Postgrex, opts})
 ```
 
 ## Set up connection to Email Server
@@ -17,7 +33,7 @@ children = [
 ```
 
 ```elixir
-Supervisor.start_link(children, strategy: :one_for_one)
+# Supervisor.start_link(children, strategy: :one_for_one)
 ```
 
-<!-- livebook:{"offset":379,"stamp":{"token":"XCP.0KwQlUI65RbqwUk-7seZ3RuSo7QQKohapp37hY04KinMSWX6cXFbk4yooqnp8BhEpn3izbZE_s8QZPf9RdsYojRtuGLS5tUmDIBmpPQXUSOEunBD8WGawQMyc8q_h5dzrp5q28NH1R8MzoY2aTcUT6MSzg","version":2}} -->
+<!-- livebook:{"offset":960,"stamp":{"token":"XCP.zN2F2sVK3vPz0g0s9JuJ9Lwg1M6cOEaM8A2J705xIXMFhQ7-ySCfatzY0splw1elgEUXNrTmKVeQv2yjLi2MWVtIzG8PBw2C_gamkoXoDe5Pq_WCpd1HQ7vUP1thxJ2z88Uq9hYq1yPNJfPvYwRmXGsETw","version":2}} -->
